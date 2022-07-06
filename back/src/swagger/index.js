@@ -8,9 +8,9 @@ const options = {
   swaggerDefinition: {
     openapi: "3.0.0",
     info: {
-      title: "elice_ai_8",
+      title: "none",
       version: "1.0.0",
-      description: "엘리스 AI 트랙 4기 AI 프로젝트 8팀의 API 명세서입니다.",
+      description: "none",
     },
     components: {
       securitySchemes: {
