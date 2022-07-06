@@ -2,12 +2,12 @@
 
 ### 폴더 구조
 #### FE
-┌── package.json
-│
-├── src ┌── styles ── Theme.js
-│       │
-│       ├── App.jsx
-│       │
-│       └── index.js
-│ 
-└── public ── index.html
+┌── package.json <br>
+│ <br>
+├── src ┌── styles ── Theme.js <br>
+│       │ <br>
+│       ├── App.jsx <br>
+│       │ <br>
+│       └── index.js <br>
+│  <br>
+└── public ── index.html <br>
