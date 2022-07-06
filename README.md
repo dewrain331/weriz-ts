@@ -2,4 +2,19 @@
 
 ### 폴더 구조
 #### FE
-tree -N -L 3 -d -I
+front
+ ┣ public
+ ┃ ┗ index.html
+ ┣ src
+ ┃ ┣ styles
+ ┃ ┃ ┗ Theme.js
+ ┃ ┣ App.jsx
+ ┃ ┗ index.js
+ ┣ .eslintignore
+ ┣ .eslintrc
+ ┣ .gitignore
+ ┣ .prettierignore
+ ┣ .prettierrc
+ ┣ package.json
+ ┣ README.md
+ ┗ yarn.lock
