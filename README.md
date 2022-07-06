@@ -17,4 +17,20 @@ front <br>
  ┣ .prettierrc <br>
  ┣ package.json <br>
  ┣ README.md <br>
- ┗ yarn.lock <br>
+ ┗ yarn.lock
+
+#### BE
+back <br>
+ ┣ src <br>
+ ┃ ┣ swagger <br>
+ ┃ ┃ ┗ index.js <br>
+ ┃ ┗ app.js <br>
+ ┣ .eslintignore <br>
+ ┣ .eslintrc <br>
+ ┣ .gitignore <br>
+ ┣ .prettierignore <br>
+ ┣ .prettierrc <br>
+ ┣ babel.config.json <br>
+ ┣ index.js <br>
+ ┣ package.json <br>
+ ┗ yarn.lock
