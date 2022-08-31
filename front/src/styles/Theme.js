@@ -1,5 +1,6 @@
 const colors = {
-  // black: "#333333"
+  black: "#333333",
+  white: "#ffffff",
 };
 
 const calcRem = (size) => `${size / 16}rem`;
