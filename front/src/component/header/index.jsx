@@ -15,9 +15,6 @@ const Header = () => {
               <li key={`nav-${data.id}`}>
                 <NavLink
                   to={data.path}
-                  style={({ isActive }) => ({
-                    textDecoration: isActive ? "underline" : "none",
-                  })}
                 >
                   {data.name}
                 </NavLink>
