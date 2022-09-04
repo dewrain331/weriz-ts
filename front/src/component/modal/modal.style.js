@@ -39,3 +39,23 @@ const ModalBackground = styled.div`
     color: ${({ theme }) => theme.colors.black}
   }
 `;
+
+const ModalBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  height: 600px;
+  padding: 50px;
+  background: ${({ theme }) => theme.colors.white};
+  border-radius: 20px;
+  animation: ${slideUp} 0.4s cubic-bezier(0.5 0, 0, 0.8) forwards;
+`;
+
+const ModalMessage = styled.p`
+  white-space: pre-line;
+  text-align: center;
+`;
+
+export { ModalMessage, ModalMessage, ModalBox }
