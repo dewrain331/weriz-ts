@@ -1,6 +1,10 @@
 const colors = {
-  black: "#333333",
+  black: "#2B2B2B",
   white: "#ffffff",
+  gray: "#2A425B",
+  blue: "#1288F8",
+  cyan: "#00D6FA",
+  sky: "7CD0FF",
 };
 
 const calcRem = (size) => `${size / 16}rem`;
