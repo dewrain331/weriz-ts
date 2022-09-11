@@ -17,6 +17,7 @@ const HeaderWrapper = styled.div`
 `;
 
 const Nav = styled.nav`
+  flex: 4;
   display: flex;
   align-items: center;
 
@@ -36,4 +37,10 @@ const Nav = styled.nav`
   }
 `;
 
-export { HeaderContainer, HeaderWrapper, Nav };
+const LoginSection = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+`;
+
+export { HeaderContainer, HeaderWrapper, Nav, LoginSection };
