@@ -42,7 +42,7 @@ const Button = ({ children, ...rest }) => {
 };
 
 Button.defaultProps = {
-  color: "cyan",
+  color: "blue",
 };
 
 export default Button;

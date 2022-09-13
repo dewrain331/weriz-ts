@@ -17,18 +17,22 @@ const HeaderWrapper = styled.div`
 `;
 
 const Nav = styled.nav`
-  flex: 4;
+  flex: 7;
   display: flex;
   align-items: center;
 
   ul {
     display: flex;
+    list-style: none;
+    margin-left: 8rem;
+    margin-bottom: 0;
 
     li {
       text-align: center;
+      margin-right: 4rem;
 
       a {
-        font-size: ${({ theme }) => theme.fontSizes.small};
+        font-size: ${({ theme }) => theme.fontSizes.base};
         font-weight: 400;
         color: ${({ theme }) => theme.colors.black};
         white-space: nowrap;

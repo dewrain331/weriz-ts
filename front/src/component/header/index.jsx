@@ -20,17 +20,15 @@ const Header = () => {
         <HeaderWrapper>
           <Nav>
             <ul>
-              {NAV_LIST.map((data) => {
+              {NAV_LIST.map((data) => (
                 <li key={`nav-${data.id}`}>
-                  <NavLink to={data.path}>{data.name}</NavLink>
-                </li>;
-              })}
+                  <NavLink to={`${data.path}`}>{data.name}</NavLink>
+                </li>
+              ))}
             </ul>
           </Nav>
           <LoginSection>
-            <Button color="sky" onClick={() => setShowAuthModal(true)}>
-              Login
-            </Button>
+            <Button onClick={() => setShowAuthModal(true)}>Login</Button>
           </LoginSection>
         </HeaderWrapper>
       </HeaderContainer>

@@ -1,17 +1,17 @@
 const NAV_LIST = [
   {
     id: "1",
-    name: "first",
+    name: "First",
     path: "/",
   },
   {
     id: "2",
-    name: "second",
+    name: "Second",
     path: "/2",
   },
   {
     id: "3",
-    name: "third",
+    name: "Third",
     path: "/3",
   },
 ];
