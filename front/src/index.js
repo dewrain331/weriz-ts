@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import App from "./App";
 import theme from "./styles/Theme";
+import Loader from "./components/loader";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -18,7 +19,7 @@ root.render(
       <RecoilRoot>
         <BrowserRouter>
           <ThemeProvider theme={theme}>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loader />}>
               <App />
             </Suspense>
           </ThemeProvider>
