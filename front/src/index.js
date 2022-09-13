@@ -1,13 +1,29 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
+import { RecoilRoot } from "recoil";
+import { ThemeProvider } from "styled-components";
+import { BrowserRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import App from "./App";
-import RecoilRoot from "recoil";
+import theme from "./styles/Theme";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const queryClient = new QueryClient();
+
 root.render(
   <React.StrictMode>
-    <RecoilRoot>
-      <App />
-    </RecoilRoot>
+    <QueryClientProvider client={queryClient}>
+      <RecoilRoot>
+        <BrowserRouter>
+          <ThemeProvider theme={theme}>
+            <Suspense fallback={<div>Loading...</div>}>
+              <App />
+            </Suspense>
+          </ThemeProvider>
+        </BrowserRouter>
+      </RecoilRoot>
+    </QueryClientProvider>
   </React.StrictMode>,
 );

@@ -1,15 +1,9 @@
 import axios from "axios";
-import dotenv from "dotenv";
-import path from "path";
 
-if (process.env.REACT_ENV === "local") {
-  dotenv.config({ path: path.join(__dirname, "./.env.local") });
-}
-
-// const SERVER_URL = process.env.SERVER_URL
+// const SERVER_URL = "1234"
 
 const Api = axios.create({
-  baseURL: SERVER_URL, // from dotenv
+  // baseURL: SERVER_URL, // from dotenv
   timeout: 10000, // ms
 });
 

@@ -5,14 +5,14 @@ import Header from "../component/header";
 
 const Layout = () => {
   return (
-    <>
+    <div>
       <header>
         <Header />
       </header>
       <main>
         <Outlet />
       </main>
-    </>
+    </div>
   );
 };
 

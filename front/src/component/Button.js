@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { darken } from "polished";
 
 const StyledButton = styled.button`
   display: inline-flex;
@@ -24,9 +23,6 @@ const StyledButton = styled.button`
         background: ${propColor};
         color: ${props.theme.colors.white};
       }
-      &:active {
-        background: ${darken(0.1, propColor)};
-      }
     `;
   }}
 
@@ -35,14 +31,18 @@ const StyledButton = styled.button`
   }
 
   &:disabled {
-    background: ${({ theme }) => theme.color.gray};
-    color: ${({ theme }) => theme.color.white};
+    background: ${({ theme }) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.white};
     border: none;
   }
 `;
 
 const Button = ({ children, ...rest }) => {
   return <StyledButton {...rest}>{children}</StyledButton>;
+};
+
+Button.defaultProps = {
+  color: "cyan",
 };
 
 export default Button;

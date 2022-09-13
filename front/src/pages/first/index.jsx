@@ -1,9 +1,5 @@
-const Main = () => {
-  return (
-    <>
-      this is Main Page.
-    </>
-  )
-}
+const First = () => {
+  return <>this is the first page.</>;
+};
 
-export default Main
+export default First;

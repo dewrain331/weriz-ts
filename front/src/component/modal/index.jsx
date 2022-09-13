@@ -1,6 +1,6 @@
 import { Modal } from "react-bootstrap";
 
-import ModalPortal from "./ModalPortal";
+import ModalPortal from "./modalPortal";
 
 const ModalComp = ({ show, setShow, title, main, children }) => {
   return (
