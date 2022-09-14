@@ -6,6 +6,7 @@ import {
   HeaderWrapper,
   Nav,
   LoginSection,
+  Logo,
 } from "./header.style";
 import { NAV_LIST } from "./constant";
 import Button from "../button";
@@ -18,6 +19,7 @@ const Header = () => {
     <>
       <HeaderContainer>
         <HeaderWrapper>
+          <Logo>This is Logo.</Logo>
           <Nav>
             <ul>
               {NAV_LIST.map((data) => (

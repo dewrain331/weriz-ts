@@ -16,15 +16,20 @@ const HeaderWrapper = styled.div`
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 6%);
 `;
 
-const Nav = styled.nav`
-  flex: 7;
+const Logo = styled.div`
+  flex: 1;
   display: flex;
-  align-items: center;
+  justify-content: center;
+`;
+
+const Nav = styled.nav`
+  flex: 5;
+  display: flex;
+  justify-content: space-between;
 
   ul {
     display: flex;
     list-style: none;
-    margin-left: 8rem;
     margin-bottom: 0;
 
     li {
@@ -44,7 +49,7 @@ const Nav = styled.nav`
 const LoginSection = styled.div`
   flex: 1;
   display: flex;
-  align-items: center;
+  justify-content: center;
 `;
 
-export { HeaderContainer, HeaderWrapper, Nav, LoginSection };
+export { HeaderContainer, HeaderWrapper, Nav, LoginSection, Logo };
