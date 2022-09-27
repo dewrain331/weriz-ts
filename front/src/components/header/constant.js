@@ -1,7 +1,7 @@
 const NAV_LIST = [
   {
     id: "1",
-    name: "First",
+    name: "Canvas",
     path: "/",
   },
   {

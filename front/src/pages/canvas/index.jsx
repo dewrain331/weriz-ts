@@ -28,7 +28,7 @@ const Canvas = () => {
     ctx.strokeRect(pos[0], pos[1], currentX - pos[0], currentY - pos[1]);
   };
 
-  const drawEnd = (evt) => {
+  const drawEnd = () => {
     setIsDraw(false);
   };
 
