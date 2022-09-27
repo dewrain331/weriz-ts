@@ -3,20 +3,34 @@ import { useEffect, useRef, useState } from "react";
 const Canvas = () => {
   const canvasRef = useRef(null);
   const [ctx, setCtx] = useState();
-
-  const drawSquare = (evt) => {
-    ctx.strokeStyle = "red";
-    let x = evt.clientX - canvasRef.current.offsetLeft;
-    let y = evt.clientY - canvasRef.current.offsetTop;
-    let w = 50;
-    let h = 50;
-    ctx.strokeRect(x - w / 2, y - h / 2, w, h);
-  };
+  const [pos, setPos] = useState([]);
+  const [isDraw, setIsDraw] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     setCtx(canvas.getContext("2d"));
   }, []);
+
+  const drawStart = (evt) => {
+    setIsDraw(true);
+    setPos([
+      evt.clientX - canvasRef.current.offsetLeft,
+      evt.clientY - canvasRef.current.offsetTop,
+    ]);
+  };
+
+  const drawSquare = (evt) => {
+    if (!isDraw) return;
+    ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    ctx.strokeStyle = "red";
+    let currentX = evt.clientX - canvasRef.current.offsetLeft;
+    let currentY = evt.clientY - canvasRef.current.offsetTop;
+    ctx.strokeRect(pos[0], pos[1], currentX - pos[0], currentY - pos[1]);
+  };
+
+  const drawEnd = (evt) => {
+    setIsDraw(false);
+  };
 
   return (
     <canvas
@@ -24,7 +38,9 @@ const Canvas = () => {
       width={500}
       height={500}
       style={{ border: "2px solid black" }}
-      onMouseDown={drawSquare}
+      onMouseDown={drawStart}
+      onMouseMove={drawSquare}
+      onMouseUp={drawEnd}
     />
   );
 };
