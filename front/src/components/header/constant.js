@@ -1,13 +1,13 @@
 const NAV_LIST = [
   {
     id: "1",
-    name: "Canvas",
+    name: "First",
     path: "/",
   },
   {
     id: "2",
-    name: "Second",
-    path: "/2",
+    name: "Canvas",
+    path: "/canvas",
   },
   {
     id: "3",

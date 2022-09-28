@@ -1,5 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 
+import {
+  CanvasContainer,
+  Contents,
+  ButtonWrapper,
+  MenuWrapper,
+  CanvasWrapper,
+} from "./canvas.style";
+import Button from "../../components/button";
+
 const Canvas = () => {
   const canvasRef = useRef(null);
   const [ctx, setCtx] = useState();
@@ -33,15 +42,26 @@ const Canvas = () => {
   };
 
   return (
-    <canvas
-      ref={canvasRef}
-      width={500}
-      height={500}
-      style={{ border: "2px solid black" }}
-      onMouseDown={drawStart}
-      onMouseMove={drawSquare}
-      onMouseUp={drawEnd}
-    />
+    <CanvasContainer>
+      <Contents>
+        <ButtonWrapper>
+          <Button>Edit</Button>
+          <Button>Save</Button>
+        </ButtonWrapper>
+        <CanvasWrapper>
+          <canvas
+            ref={canvasRef}
+            width={500}
+            height={500}
+            style={{ border: "2px solid black" }}
+            onMouseDown={drawStart}
+            onMouseMove={drawSquare}
+            onMouseUp={drawEnd}
+          />
+          <MenuWrapper></MenuWrapper>
+        </CanvasWrapper>
+      </Contents>
+    </CanvasContainer>
   );
 };
 
