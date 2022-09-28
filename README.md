@@ -4,49 +4,45 @@
 ### FE
 front <br>
  ┣ public <br>
- ┃ ┗ index.html <br>
  ┣ src <br>
+ ┃ ┣ assets <br>
+ ┃ ┃ ┗ imgs <br>
+ ┃ ┃ ┃ ┗ LoaderImg.gif <br>
+ ┃ ┣ components <br>
+ ┃ ┃ ┗ auth <br>
+ ┃ ┃ ┗ header <br>
+ ┃ ┃ ┗ loader <br>
+ ┃ ┃ ┗ modal <br>
+ ┃ ┣ pages <br>
+ ┃ ┃ ┗ first <br>
+ ┃ ┃ ┗ second <br>
+ ┃ ┃ ┗ third <br>
  ┃ ┣ styles <br>
- ┃ ┃ ┗ Theme.js <br>
  ┃ ┣ App.jsx <br>
  ┃ ┗ index.js <br>
- ┣ .eslintignore <br>
- ┣ .eslintrc <br>
- ┣ .gitignore <br>
- ┣ .prettierignore <br>
- ┣ .prettierrc <br>
- ┣ package.json <br>
- ┣ README.md <br>
- ┗ yarn.lock
+ ┃ ┗ api.js <br>
 
 ### BE
 back <br>
  ┣ src <br>
+ ┃ ┣ middlewares <br>
  ┃ ┣ swagger <br>
- ┃ ┃ ┗ index.js <br>
  ┃ ┗ app.js <br>
- ┣ .eslintignore <br>
- ┣ .eslintrc <br>
- ┣ .gitignore <br>
- ┣ .prettierignore <br>
- ┣ .prettierrc <br>
- ┣ babel.config.json <br>
  ┣ index.js <br>
  ┣ package.json <br>
- ┗ yarn.lock
 
 ## package.json
 ### FE
-"axios": "^0.27.2", <br>
-"react": "^18.2.0", <br>
-"react-dom": "^18.2.0", <br>
-"react-query": "^3.39.1", <br>
-"react-router-dom": "^6.3.0", <br>
-"react-scripts": "5.0.1", <br>
-"recoil": "^0.7.4", <br>
-"styled-components": "^5.3.5", <br>
-"cross-env": "^7.0.3", <br>
-"dotenv": "^16.0.1", <br>
+"axios": "^0.27.2",<br>
+"bootstrap": "^5.2.1",<br>
+"react": "^18.2.0",<br>
+"react-bootstrap": "^2.5.0",<br>
+"react-dom": "^18.2.0",<br>
+"react-query": "^3.39.1",<br>
+"react-router-dom": "^6.3.0",<br>
+"react-scripts": "5.0.1",<br>
+"recoil": "^0.7.4",<br>
+"styled-components": "^5.3.5",<br>
 "eslint-config-prettier": "^8.5.0", <br>
 "eslint-plugin-prettier": "^4.2.1", <br>
 "prettier": "^2.7.1"
