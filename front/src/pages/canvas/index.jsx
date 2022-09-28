@@ -14,6 +14,7 @@ const Canvas = () => {
   const [ctx, setCtx] = useState();
   const [pos, setPos] = useState([]);
   const [isDraw, setIsDraw] = useState(false);
+  const [mode, setMode] = useState("read");
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -41,11 +42,23 @@ const Canvas = () => {
     setIsDraw(false);
   };
 
+  const changeMode = () => {
+    if (mode === "read") {
+      setMode("edit");
+    } else if (mode === "edit") {
+      setMode("read");
+    }
+  };
+
   return (
     <CanvasContainer>
       <Contents>
         <ButtonWrapper>
-          <Button>Edit</Button>
+          {mode === "read" ? (
+            <Button onClick={changeMode}>Edit</Button>
+          ) : (
+            <Button onClick={changeMode}>Read</Button>
+          )}
           <Button>Save</Button>
         </ButtonWrapper>
         <CanvasWrapper>
@@ -58,7 +71,12 @@ const Canvas = () => {
             onMouseMove={drawSquare}
             onMouseUp={drawEnd}
           />
-          <MenuWrapper></MenuWrapper>
+          <MenuWrapper>
+            <Button style={{ marginBottom: "1rem" }}>Circle</Button>
+            <Button style={{ marginLeft: "0", marginBottom: "1rem" }}>
+              Rectangular
+            </Button>
+          </MenuWrapper>
         </CanvasWrapper>
       </Contents>
     </CanvasContainer>
