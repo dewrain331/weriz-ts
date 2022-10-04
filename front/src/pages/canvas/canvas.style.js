@@ -24,18 +24,34 @@ const ButtonWrapper = styled.div`
   padding-bottom: 2rem;
 `;
 
-const MenuWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-left: 4rem;
-`;
-
 const CanvasWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-export { CanvasContainer, Contents, ButtonWrapper, MenuWrapper, CanvasWrapper };
+const Drawer = styled.div`
+  width: 500px;
+  height: 500px;
+  border: 1px solid silver;
+  background-size: 10px, 30px, 10px 10px, 30px 30px;
+  background-image: linear-gradient(90deg, #00000004 1px, transparent 1px),
+    linear-gradient(90deg, #00000004 1px, transparent 1px),
+    linear-gradient(#00000004 1px, transparent 1px),
+    linear-gradient(#00000004 1px, transparent 1px);
+`;
+
+const PushRight = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+`;
+
+export {
+  CanvasContainer,
+  Contents,
+  ButtonWrapper,
+  CanvasWrapper,
+  Drawer,
+  PushRight,
+};

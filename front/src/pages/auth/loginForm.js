@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Form } from "react-bootstrap";
 
 import Api from "../../api";
-import Button from "../button";
+import Button from "../../components/button";
+import { PushRight } from "./auth.style";
 
 const LoginForm = ({ setShow }) => {
   const [email, setEmail] = useState("");
@@ -31,7 +32,10 @@ const LoginForm = ({ setShow }) => {
         value={password}
         onChange={(evt) => setPassword(evt.target.value)}
       />
-      <Button type="submit">Sign In</Button>
+      <br />
+      <PushRight>
+        <Button type="submit">Sign In</Button>
+      </PushRight>
     </Form>
   );
 };

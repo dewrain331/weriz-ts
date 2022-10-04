@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import ModalComp from "../modal";
+import ModalComp from "../../components/modal";
 import LoginForm from "./loginForm";
 import RegisterForm from "./registerForm";
 
