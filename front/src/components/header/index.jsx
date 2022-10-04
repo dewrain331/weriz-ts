@@ -30,7 +30,7 @@ const Header = () => {
             </ul>
           </Nav>
           <LoginSection>
-            <Button onClick={() => setShowAuthModal(true)}>Login</Button>
+            <Button onClick={() => setShowAuthModal(true)}>Sign In</Button>
           </LoginSection>
         </HeaderWrapper>
       </HeaderContainer>

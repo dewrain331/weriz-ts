@@ -4,6 +4,7 @@ import { Form } from "react-bootstrap";
 import ModalComp from "../../components/modal";
 import Button from "../../components/button";
 import { PushRight } from "./canvas.style";
+import DrawFigure from "./drawFigure";
 
 const FigureModal = ({ show, setShow }) => {
   const [figure, setFigure] = useState("Rectangular");
@@ -11,13 +12,21 @@ const FigureModal = ({ show, setShow }) => {
   const [height, setHeight] = useState("50");
   const [color, setColor] = useState("ff0000");
 
+  const submitHandler = (evt) => {
+    evt.preventDefault();
+    setShow(false);
+    return (
+      <DrawFigure figure={figure} width={width} height={height} color={color} />
+    );
+  };
+
   return (
     <ModalComp
       show={show}
       setShow={setShow}
       title="Draw a Figure"
       main={
-        <Form>
+        <Form onSubmit={submitHandler}>
           <Form.Label>Choose figure</Form.Label>
           <Form.Control
             as="select"
@@ -26,7 +35,6 @@ const FigureModal = ({ show, setShow }) => {
           >
             <option value="Rectangular">Rectangular</option>
             <option value="Circle">Circle</option>
-            <option value="Triangle">Triangle</option>
           </Form.Control>
           <br />
           <Form.Label>Choose color</Form.Label>
@@ -55,7 +63,7 @@ const FigureModal = ({ show, setShow }) => {
           />
           <br />
           <PushRight>
-            <Button>Draw It!</Button>
+            <Button type="submit">Draw It</Button>
           </PushRight>
         </Form>
       }

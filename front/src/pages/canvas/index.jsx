@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import Draggable from "react-draggable";
 
 import {
   CanvasContainer,
