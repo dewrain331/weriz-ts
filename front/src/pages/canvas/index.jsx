@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 import {
   CanvasContainer,
@@ -9,10 +9,18 @@ import {
 } from "./canvas.style";
 import Button from "../../components/button";
 import FigureModal from "./figureModal";
+import DrawFigure from "./drawFigure";
 
 const Canvas = () => {
   const [mode, setMode] = useState("read");
   const [showFigureModal, setShowFigureModal] = useState(false);
+  const [figureData, setFigureData] = useState({
+    figure: "",
+    width: "",
+    height: "",
+    color: "",
+  });
+  const [draw, setDraw] = useState(false);
 
   const changeMode = () => {
     if (mode === "read") {
@@ -40,12 +48,17 @@ const Canvas = () => {
             </Button>
           </ButtonWrapper>
           <CanvasWrapper>
-            <Drawer />
+            <Drawer>{draw && <DrawFigure figureData={figureData} />}</Drawer>
           </CanvasWrapper>
         </Contents>
       </CanvasContainer>
       {showFigureModal && (
-        <FigureModal show={showFigureModal} setShow={setShowFigureModal} />
+        <FigureModal
+          show={showFigureModal}
+          setShow={setShowFigureModal}
+          setFigureData={setFigureData}
+          setDraw={setDraw}
+        />
       )}
     </>
   );

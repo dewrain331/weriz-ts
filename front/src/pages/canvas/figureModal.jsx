@@ -4,20 +4,23 @@ import { Form } from "react-bootstrap";
 import ModalComp from "../../components/modal";
 import Button from "../../components/button";
 import { PushRight } from "./canvas.style";
-import DrawFigure from "./drawFigure";
 
-const FigureModal = ({ show, setShow }) => {
-  const [figure, setFigure] = useState("Rectangular");
+const FigureModal = ({ show, setShow, setFigureData, setDraw }) => {
+  const [figure, setFigure] = useState("");
   const [width, setWidth] = useState("50");
   const [height, setHeight] = useState("50");
-  const [color, setColor] = useState("ff0000");
+  const [color, setColor] = useState("#ff0000");
 
   const submitHandler = (evt) => {
     evt.preventDefault();
     setShow(false);
-    return (
-      <DrawFigure figure={figure} width={width} height={height} color={color} />
-    );
+    setFigureData({
+      figure,
+      width,
+      height,
+      color,
+    });
+    setDraw(true);
   };
 
   return (
@@ -63,7 +66,7 @@ const FigureModal = ({ show, setShow }) => {
           />
           <br />
           <PushRight>
-            <Button type="submit">Draw It</Button>
+            <Button type="submit">Draw it</Button>
           </PushRight>
         </Form>
       }
