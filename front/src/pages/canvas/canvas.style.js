@@ -31,8 +31,8 @@ const CanvasWrapper = styled.div`
 `;
 
 const Drawer = styled.div`
-  width: 40rem;
-  height: 40rem;
+  width: ${(props) => props.width};
+  height: ${(props) => props.width};
   border: 1px solid silver;
   background-size: 10px, 30px, 10px 10px, 30px 30px;
   background-image: linear-gradient(90deg, #00000004 1px, transparent 1px),

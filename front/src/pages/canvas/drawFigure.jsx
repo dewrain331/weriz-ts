@@ -1,15 +1,20 @@
 import Draggable from "react-draggable";
 import { useRef } from "react";
 
-const DrawFigure = ({ figureData }) => {
+const DrawFigure = ({ figureData, canvasSize }) => {
   const { width, height, color, figure } = figureData;
+  const { width: canvasWidth, height: canvasHeight } = canvasSize;
   const nodeRef = useRef(null);
 
   return (
     <Draggable
       nodeRef={nodeRef}
-      bounds="parent"
-      defaultPosition={{ x: 50, y: 50 }}
+      bounds={{
+        left: 0,
+        top: 0,
+        right: parseInt(canvasWidth) - parseInt(width),
+        bottom: parseInt(canvasHeight) - parseInt(height),
+      }}
     >
       <div
         style={{
