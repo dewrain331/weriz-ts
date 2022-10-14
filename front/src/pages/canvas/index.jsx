@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import Draggable from "react-draggable";
 
 import {
   CanvasContainer,
@@ -9,24 +10,16 @@ import {
 } from "./canvas.style";
 import Button from "../../components/button";
 import FigureModal from "./figureModal";
-import CanvasModal from "./canvasModal";
-import DrawFigure from "./drawFigure";
 
 const Canvas = () => {
   const [mode, setMode] = useState("read");
   const [showFigureModal, setShowFigureModal] = useState(false);
-  const [showCanvasModal, setShowCanvasModal] = useState(false);
-  const [figureData, setFigureData] = useState({
-    figure: "",
-    width: "",
-    height: "",
-    color: "",
-  });
-  const [canvasSize, setCanvasSize] = useState({
-    width: "300",
-    height: "300",
-  });
-  const [draw, setDraw] = useState(false);
+  const canvasSize = {
+    width: "700",
+    height: "700",
+  };
+  const [figures, setFigures] = useState([]);
+  const nodeRef = useRef(null);
 
   const changeMode = () => {
     if (mode === "read") {
@@ -36,6 +29,10 @@ const Canvas = () => {
       alert("The mode is read now.");
       setMode("read");
     }
+  };
+
+  const clickHandler = () => {
+    alert("Hi");
   };
 
   return (
@@ -49,11 +46,11 @@ const Canvas = () => {
               <Button onClick={changeMode}>Read</Button>
             )}
             <Button>Save</Button>
-            <Button onClick={() => setShowFigureModal(true)}>
+            <Button
+              onClick={() => setShowFigureModal(true)}
+              disabled={mode === "read"}
+            >
               Draw a figure
-            </Button>
-            <Button onClick={() => setShowCanvasModal(true)}>
-              Set the canvas
             </Button>
           </ButtonWrapper>
           <CanvasWrapper>
@@ -62,9 +59,34 @@ const Canvas = () => {
               width={`${canvasSize.width}px`}
               height={`${canvasSize.height}px`}
             >
-              {draw && (
-                <DrawFigure figureData={figureData} canvasSize={canvasSize} />
-              )}
+              {figures.length > 0 &&
+                figures.map((v) => (
+                  <Draggable
+                    nodeRef={nodeRef}
+                    key={v.id}
+                    bounds={{
+                      left: 0,
+                      top: 0,
+                      right: parseInt(canvasSize.width) - parseInt(v.width),
+                      bottom: parseInt(canvasSize.width) - parseInt(v.height),
+                    }}
+                    disabled={mode === "read"}
+                  >
+                    <div
+                      style={{
+                        width: `${v.width}px`,
+                        height: `${v.height}px`,
+                        border: `3px solid ${v.color}`,
+                        borderRadius: v.figure === "Circle" ? "50%" : "0%",
+                        position: "absolute",
+                        cursor: mode === "read" ? "pointer" : "move",
+                      }}
+                      key={v.id}
+                      ref={nodeRef}
+                      onClick={mode === "read" && clickHandler}
+                    />
+                  </Draggable>
+                ))}
             </Drawer>
           </CanvasWrapper>
           Canvas is {canvasSize.width}px * {canvasSize.height}px now.
@@ -74,15 +96,8 @@ const Canvas = () => {
         <FigureModal
           show={showFigureModal}
           setShow={setShowFigureModal}
-          setFigureData={setFigureData}
-          setDraw={setDraw}
-        />
-      )}
-      {showCanvasModal && (
-        <CanvasModal
-          show={showCanvasModal}
-          setShow={setShowCanvasModal}
-          setCanvasSize={setCanvasSize}
+          figures={figures}
+          setFigures={setFigures}
         />
       )}
     </>

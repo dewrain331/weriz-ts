@@ -5,7 +5,7 @@ import ModalComp from "../../components/modal";
 import Button from "../../components/button";
 import { PushRight } from "./canvas.style";
 
-const FigureModal = ({ show, setShow, setFigureData, setDraw }) => {
+const FigureModal = ({ show, setShow, figures, setFigures }) => {
   const [figure, setFigure] = useState("");
   const [width, setWidth] = useState("50");
   const [height, setHeight] = useState("50");
@@ -14,13 +14,17 @@ const FigureModal = ({ show, setShow, setFigureData, setDraw }) => {
   const submitHandler = (evt) => {
     evt.preventDefault();
     setShow(false);
-    setFigureData({
-      figure,
-      width,
-      height,
-      color,
-    });
-    setDraw(true);
+    const prev = figures;
+    setFigures([
+      ...prev,
+      {
+        id: `${figures.length + 1}`,
+        width,
+        height,
+        color,
+        figure,
+      },
+    ]);
   };
 
   return (

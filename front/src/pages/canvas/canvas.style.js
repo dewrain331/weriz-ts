@@ -31,6 +31,7 @@ const CanvasWrapper = styled.div`
 `;
 
 const Drawer = styled.div`
+  position: relative;
   width: ${(props) => props.width};
   height: ${(props) => props.width};
   border: 1px solid silver;
