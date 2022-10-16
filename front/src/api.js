@@ -3,7 +3,7 @@ import axios from "axios";
 // const SERVER_URL = "1234"
 
 const Api = axios.create({
-  // baseURL: SERVER_URL, // from dotenv
+  // baseURL: SERVER_URL,
   timeout: 10000, // ms
 });
 

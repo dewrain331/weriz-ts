@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
+import { v4 as uuidv4 } from "uuid";
 
 import ModalComp from "../../components/modal";
 import Button from "../../components/button";
@@ -14,11 +15,12 @@ const FigureModal = ({ show, setShow, figures, setFigures }) => {
   const submitHandler = (evt) => {
     evt.preventDefault();
     setShow(false);
+    const id = uuidv4();
     const prev = figures;
     setFigures([
       ...prev,
       {
-        id: `${figures.length + 1}`,
+        id,
         width,
         height,
         color,

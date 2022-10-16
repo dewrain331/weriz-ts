@@ -1,5 +1,8 @@
 import { useState, useRef } from "react";
 import Draggable from "react-draggable";
+import axios from "axios";
+
+// import api from "../../api";
 
 import {
   CanvasContainer,
@@ -32,8 +35,8 @@ const Canvas = () => {
     }
   };
 
-  const clickHandler = () => {
-    alert("Hi");
+  const clickHandler = ({ id }) => {
+    alert(id);
   };
 
   return (
@@ -80,7 +83,11 @@ const Canvas = () => {
                       figure={v.figure}
                       key={v.id}
                       ref={nodeRef}
-                      onClick={mode === "read" && clickHandler}
+                      onClick={() => {
+                        if (mode === "read") {
+                          clickHandler({ id: v.id });
+                        }
+                      }}
                       style={{ cursor: mode === "read" ? "pointer" : "move" }}
                     />
                   </Draggable>
