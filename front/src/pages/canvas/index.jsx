@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 import Draggable from "react-draggable";
-import axios from "axios";
 
 // import api from "../../api";
 
