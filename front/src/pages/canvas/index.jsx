@@ -7,6 +7,7 @@ import {
   ButtonWrapper,
   CanvasWrapper,
   Drawer,
+  TheFigure,
 } from "./canvas.style";
 import Button from "../../components/button";
 import FigureModal from "./figureModal";
@@ -72,18 +73,15 @@ const Canvas = () => {
                     }}
                     disabled={mode === "read"}
                   >
-                    <div
-                      style={{
-                        width: `${v.width}px`,
-                        height: `${v.height}px`,
-                        border: `3px solid ${v.color}`,
-                        borderRadius: v.figure === "Circle" ? "50%" : "0%",
-                        position: "absolute",
-                        cursor: mode === "read" ? "pointer" : "move",
-                      }}
+                    <TheFigure
+                      width={`${v.width}px`}
+                      height={`${v.height}px`}
+                      color={v.color}
+                      figure={v.figure}
                       key={v.id}
                       ref={nodeRef}
                       onClick={mode === "read" && clickHandler}
+                      style={{ cursor: mode === "read" ? "pointer" : "move" }}
                     />
                   </Draggable>
                 ))}

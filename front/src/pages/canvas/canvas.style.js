@@ -48,6 +48,18 @@ const PushRight = styled.div`
   width: 100%;
 `;
 
+const TheFigure = styled.div`
+  position: absolute;
+  width: ${(props) => props.width};
+  height: ${(props) => props.width};
+  border: 1px solid ${(props) => props.color};
+  border-radius: ${(props) => (props.figure === "Circle" ? "50%" : "0%")};
+
+  &:hover {
+    background: ${(props) => props.color};
+  }
+`;
+
 export {
   CanvasContainer,
   Contents,
@@ -55,4 +67,5 @@ export {
   CanvasWrapper,
   Drawer,
   PushRight,
+  TheFigure,
 };
