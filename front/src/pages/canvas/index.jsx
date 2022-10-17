@@ -13,6 +13,7 @@ import {
 } from "./canvas.style";
 import Button from "../../components/button";
 import FigureModal from "./figureModal";
+import PostController from "./post/postController";
 
 const Canvas = () => {
   const [mode, setMode] = useState("read");

@@ -2,8 +2,8 @@ import { Form } from "react-bootstrap";
 import { useState } from "react";
 // import api from "../../api";
 
-import { Contents, PushRight } from "./canvas.style";
-import Button from "../../components/button";
+import { Contents, PushRight } from "../canvas.style";
+import Button from "../../../components/button";
 
 const PostPlace = ({ id }) => {
   const [name, setName] = useState("");

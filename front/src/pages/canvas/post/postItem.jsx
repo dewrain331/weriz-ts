@@ -2,13 +2,14 @@ import { Form } from "react-bootstrap";
 import { useState } from "react";
 // import api from "../../api";
 
-import { Contents, PushRight } from "./canvas.style";
-import Button from "../../components/button";
+import { Contents, PushRight } from "../canvas.style";
+import Button from "../../../components/button";
 
 const PostItem = ({ id }) => {
   const [name, setName] = useState("");
   const [count, setCount] = useState(0);
   const [description, setDescription] = useState("");
+  const [dueDate, setDueDate] = useState("");
 
   const submitItem = (evt) => {
     evt.preventDefault();
@@ -29,6 +30,13 @@ const PostItem = ({ id }) => {
           type="number"
           value={count}
           onChange={(evt) => setCount(evt.target.value)}
+        />
+        <br />
+        <Form.Label>Due Date</Form.Label>
+        <Form.Control
+          type="date"
+          value={dueDate}
+          onChange={(evt) => setDueDate(evt.target.value)}
         />
         <br />
         <Form.Label>Description</Form.Label>
