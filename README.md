@@ -2,21 +2,21 @@
 
 ## 폴더 구조
 ### FE
-front
- ┣ public
- ┃ ┗ index.html
- ┣ src
- ┃ ┣ assets
- ┃ ┃ ┗ imgs
- ┃ ┃ ┃ ┗ LoaderImg.gif
- ┃ ┣ components
- ┃ ┃ ┣ header
- ┃ ┃ ┃ ┣ constant.js
- ┃ ┃ ┃ ┣ header.style.ts
- ┃ ┃ ┃ ┗ index.tsx
- ┃ ┃ ┣ loader
- ┃ ┃ ┃ ┣ index.tsx
- ┃ ┃ ┃ ┗ loader.style.ts
+front  
+ ┣ public  
+ ┃ ┗ index.html  
+ ┣ src  
+ ┃ ┣ assets  
+ ┃ ┃ ┗ imgs  
+ ┃ ┃ ┃ ┗ LoaderImg.gif  
+ ┃ ┣ components  
+ ┃ ┃ ┣ header  
+ ┃ ┃ ┃ ┣ constant.js  
+ ┃ ┃ ┃ ┣ header.style.ts  
+ ┃ ┃ ┃ ┗ index.tsx  
+ ┃ ┃ ┣ loader  
+ ┃ ┃ ┃ ┣ index.tsx  
+ ┃ ┃ ┃ ┗ loader.style.ts  
  ┃ ┃ ┣ modal
  ┃ ┃ ┃ ┣ index.tsx
  ┃ ┃ ┃ ┗ modalPortal.js
@@ -56,13 +56,35 @@ front
  ┗ yarn.lock
 
 ### BE
-back <br>
- ┣ src <br>
- ┃ ┣ middlewares <br>
- ┃ ┣ swagger <br>
- ┃ ┗ app.js <br>
- ┣ index.js <br>
- ┣ package.json <br>
+back
+ ┣ src
+ ┃ ┣ db
+ ┃ ┃ ┣ models
+ ┃ ┃ ┃ ┗ userModel.ts
+ ┃ ┃ ┣ schemas
+ ┃ ┃ ┃ ┣ interface.ts
+ ┃ ┃ ┃ ┗ user.schema.ts
+ ┃ ┃ ┗ index.ts
+ ┃ ┣ middlewares
+ ┃ ┃ ┣ badRequest.ts
+ ┃ ┃ ┣ errorMiddleware.ts
+ ┃ ┃ ┣ index.ts
+ ┃ ┃ ┗ loginRequired.ts
+ ┃ ┣ routers
+ ┃ ┃ ┣ index.ts
+ ┃ ┃ ┗ userRouter.ts
+ ┃ ┣ swagger
+ ┃ ┃ ┗ index.ts
+ ┃ ┣ app.ts
+ ┃ ┗ server.ts
+ ┣ .eslintignore
+ ┣ .eslintrc
+ ┣ .gitignore
+ ┣ .prettierignore
+ ┣ .prettierrc
+ ┣ package.json
+ ┣ tsconfig.json
+ ┗ yarn.lock
 
 ## package.json
 ### FE
