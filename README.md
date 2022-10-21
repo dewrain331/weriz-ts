@@ -2,25 +2,58 @@
 
 ## 폴더 구조
 ### FE
-front <br>
- ┣ public <br>
- ┣ src <br>
- ┃ ┣ assets <br>
- ┃ ┃ ┗ imgs <br>
- ┃ ┃ ┃ ┗ LoaderImg.gif <br>
- ┃ ┣ components <br>
- ┃ ┃ ┗ auth <br>
- ┃ ┃ ┗ header <br>
- ┃ ┃ ┗ loader <br>
- ┃ ┃ ┗ modal <br>
- ┃ ┣ pages <br>
- ┃ ┃ ┗ first <br>
- ┃ ┃ ┗ second <br>
- ┃ ┃ ┗ third <br>
- ┃ ┣ styles <br>
- ┃ ┣ App.jsx <br>
- ┃ ┗ index.js <br>
- ┃ ┗ api.js <br>
+front
+ ┣ public
+ ┃ ┗ index.html
+ ┣ src
+ ┃ ┣ assets
+ ┃ ┃ ┗ imgs
+ ┃ ┃ ┃ ┗ LoaderImg.gif
+ ┃ ┣ components
+ ┃ ┃ ┣ header
+ ┃ ┃ ┃ ┣ constant.js
+ ┃ ┃ ┃ ┣ header.style.ts
+ ┃ ┃ ┃ ┗ index.tsx
+ ┃ ┃ ┣ loader
+ ┃ ┃ ┃ ┣ index.tsx
+ ┃ ┃ ┃ ┗ loader.style.ts
+ ┃ ┃ ┣ modal
+ ┃ ┃ ┃ ┣ index.tsx
+ ┃ ┃ ┃ ┗ modalPortal.js
+ ┃ ┃ ┗ button.js
+ ┃ ┣ pages
+ ┃ ┃ ┣ auth
+ ┃ ┃ ┃ ┣ auth.interface.ts
+ ┃ ┃ ┃ ┣ auth.style.ts
+ ┃ ┃ ┃ ┣ index.tsx
+ ┃ ┃ ┃ ┣ loginForm.tsx
+ ┃ ┃ ┃ ┗ registerForm.tsx
+ ┃ ┃ ┣ canvas
+ ┃ ┃ ┃ ┣ canvas.interface.ts
+ ┃ ┃ ┃ ┣ canvas.style.ts
+ ┃ ┃ ┃ ┣ figureModal.tsx
+ ┃ ┃ ┃ ┗ index.tsx
+ ┃ ┃ ┗ main
+ ┃ ┃ ┃ ┣ index.tsx
+ ┃ ┃ ┃ ┗ main.style.js
+ ┃ ┣ styles
+ ┃ ┃ ┣ layout.tsx
+ ┃ ┃ ┗ Theme.js
+ ┃ ┣ api.js
+ ┃ ┣ App.tsx
+ ┃ ┣ index.tsx
+ ┃ ┗ react-app-env.d.ts
+ ┣ .eslintignore
+ ┣ .eslintrc
+ ┣ .gitignore
+ ┣ .prettierignore
+ ┣ .prettierrc
+ ┣ craco.config.js
+ ┣ package.json
+ ┣ README.md
+ ┣ tsconfig.json
+ ┣ tsconfig.paths.json
+ ┗ yarn.lock
 
 ### BE
 back <br>
