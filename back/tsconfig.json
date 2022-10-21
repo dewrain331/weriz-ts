@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "experimentalDecorators": true /* Enable experimental support for TC39 stage 2 draft decorators. */,
+    "emitDecoratorMetadata": true,
+    "module": "commonjs" /* Specify what module code is generated. */,
+    "baseUrl": "./" /* Specify the base directory to resolve non-relative module names. */,
+    "paths": { "@src/*": ["src/*"] },
+    "allowJs": true /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */,
+    "outDir": "./dist" /* Specify an output folder for all emitted files. */,
+    "resolveJsonModule": true, // 자바스크립트 모듈을 Import 하기 위한 옵션
+    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "strict": true /* Enable all strict type-checking options. */,
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+  },
+  "include": ["src/**/*", "src/app.ts", "swagger.js", "config"],
+  "exclude": [
+    "node_modules",
+    "dist/",
+    "script",
+    "seeds/",
+    "env/",
+    "__tests__",
+    "jest.config.ts"
+  ]
+}

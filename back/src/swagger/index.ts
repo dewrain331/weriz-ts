@@ -1,16 +1,21 @@
-import swaggerJsdoc from "swagger-jsdoc";
+import dotenv from "dotenv";
+import path from "path";
 import swaggerUi from "swagger-ui-express";
-import "dotenv/config";
+import swaggerJsdoc from "swagger-jsdoc";
 
-const PORT = +process.env.SERVER_PORT;
+if (process.env.NODE_ENV === "development") {
+  dotenv.config({ path: path.join(__dirname, "../../config/.env") });
+}
 
-const options = {
+const PORT = process.env.PORT || 5002;
+
+const options: any = {
   swaggerDefinition: {
     openapi: "3.0.0",
     info: {
-      title: "none",
+      title: "Weriz",
       version: "1.0.0",
-      description: "none",
+      description: "Swagger Api Document for Weriz",
     },
     components: {
       securitySchemes: {
@@ -29,9 +34,9 @@ const options = {
       },
     ],
   },
-  apis: ["./src/swagger/*.yaml"],
+  apis: ["./*.yaml"],
 };
 
-const specs = swaggerJsdoc(options);
+const specs: any = swaggerJsdoc(options);
 
 export { swaggerUi, specs };

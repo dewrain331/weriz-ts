@@ -1,8 +1,9 @@
 import express from "express";
 import cors from "cors";
 
-import { swaggerUi, specs } from "./swagger/";
-import { errorMiddleware, badRequest } from "./middlewares";
+import { errorMiddleware, badRequest } from "@src/middlewares";
+import { userRouter } from "@src/routers";
+import { swaggerUi, specs } from "@src/swagger";
 
 const app = express();
 
@@ -11,19 +12,20 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// swagger
+// swagger api
 app.use(
   "/api-docs",
   swaggerUi.serve,
   swaggerUi.setup(specs, { explorer: true }),
 );
 
-// routers
+// routers : always userRouter should be the highest one.
+app.use(userRouter);
 
-// errorMiddleware
+// error Middleware
 app.use(errorMiddleware);
 
-// 404 not Found
+// 404 not found
 app.use(badRequest);
 
-export { app };
+export default app;
