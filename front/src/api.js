@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import axios from "axios";
 
 // const SERVER_URL = "1234"

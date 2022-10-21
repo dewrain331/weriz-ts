@@ -1,16 +1,17 @@
-import { useState } from "react";
+import React, { useState, FormEvent } from "react";
 import { Form } from "react-bootstrap";
 
-import Api from "../../api";
-import Button from "../../components/button";
+import Button from "@/components/button";
 import { PushRight } from "./auth.style";
+import { FormProps } from "./auth.interface";
 
-const LoginForm = ({ setShow }) => {
+const LoginForm = ({ setShow }: FormProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const submitLoginForm = async (evt) => {
+  const submitLoginForm = async (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
+    setShow(false);
   };
 
   return (

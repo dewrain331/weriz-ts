@@ -1,14 +1,11 @@
-import React, { useState, Dispatch, SetStateAction, FormEvent } from "react";
+import React, { useState, FormEvent } from "react";
 import { Form } from "react-bootstrap";
 
 import Button from "@/components/button";
 import { PushRight } from "./auth.style";
+import { FormProps } from "./auth.interface";
 
-interface LoginFormProps {
-  setShow: Dispatch<SetStateAction<boolean>>;
-}
-
-const LoginForm = ({ setShow }: LoginFormProps) => {
+const RegisterForm = ({ setShow }: FormProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -44,4 +41,4 @@ const LoginForm = ({ setShow }: LoginFormProps) => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import ReactDom from "react-dom";
 
 const ModalPortal = ({ children }) => {

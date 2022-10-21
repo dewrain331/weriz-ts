@@ -1,3 +1,4 @@
+import React from "react";
 import { MainContainer, Contents } from "./main.style";
 
 const Main = () => {

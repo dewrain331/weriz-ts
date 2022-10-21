@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const colors = {
   black: "#2B2B2B",
   white: "#ffffff",

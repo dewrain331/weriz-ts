@@ -1,18 +1,15 @@
+/* eslint-disable */
+
 const NAV_LIST = [
   {
     id: "1",
-    name: "First",
+    name: "Main",
     path: "/",
   },
   {
     id: "2",
     name: "Canvas",
     path: "/canvas",
-  },
-  {
-    id: "3",
-    name: "Third",
-    path: "/3",
   },
 ];
 

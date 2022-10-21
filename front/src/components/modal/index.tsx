@@ -1,8 +1,17 @@
+import React, { Dispatch, SetStateAction } from "react";
 import { Modal } from "react-bootstrap";
 
 import ModalPortal from "./modalPortal";
 
-const ModalComp = ({ show, setShow, title, main, children }) => {
+interface ModalProps {
+  show: boolean;
+  setShow: Dispatch<SetStateAction<boolean>>;
+  title: string;
+  main: JSX.Element;
+  children?: JSX.Element;
+}
+
+const ModalComp = ({ show, setShow, title, main, children }: ModalProps) => {
   return (
     <ModalPortal>
       <Modal show={show} onHide={() => setShow(false)}>
@@ -14,6 +23,10 @@ const ModalComp = ({ show, setShow, title, main, children }) => {
       </Modal>
     </ModalPortal>
   );
+};
+
+ModalComp.defaultProps = {
+  children: "",
 };
 
 export default ModalComp;

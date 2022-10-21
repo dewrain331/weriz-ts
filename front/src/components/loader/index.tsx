@@ -1,4 +1,6 @@
-import LoaderImg from "../../assets/imgs/LoaderImg.gif";
+import React from "react";
+
+import LoaderImg from "@/assets/imgs/LoaderImg.gif";
 import { LoaderBackground, LoaderText } from "./loader.style";
 
 const Loader = () => {

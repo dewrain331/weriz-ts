@@ -1,7 +1,5 @@
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Draggable from "react-draggable";
-
-// import api from "../../api";
 
 import {
   CanvasContainer,
@@ -11,18 +9,22 @@ import {
   Drawer,
   TheFigure,
 } from "./canvas.style";
-import Button from "../../components/button";
+import Button from "@/components/button";
 import FigureModal from "./figureModal";
-import PostController from "./post/postController";
+import { IFigure } from "./canvas.interface";
+
+interface clickHandlerProps {
+  id: string;
+}
 
 const Canvas = () => {
-  const [mode, setMode] = useState("read");
-  const [showFigureModal, setShowFigureModal] = useState(false);
+  const [mode, setMode] = useState<string>("read");
+  const [showFigureModal, setShowFigureModal] = useState<boolean>(false);
+  const [figures, setFigures] = useState<IFigure[] | []>([]);
   const canvasSize = {
-    width: "700",
-    height: "700",
+    width: 700,
+    height: 700,
   };
-  const [figures, setFigures] = useState([]);
   const nodeRef = useRef(null);
 
   const changeMode = () => {
@@ -35,7 +37,7 @@ const Canvas = () => {
     }
   };
 
-  const clickHandler = ({ id }) => {
+  const clickHandler = ({ id }: clickHandlerProps) => {
     alert(id);
   };
 
@@ -64,15 +66,15 @@ const Canvas = () => {
               height={`${canvasSize.height}px`}
             >
               {figures.length > 0 &&
-                figures.map((v) => (
+                figures.map((v: IFigure) => (
                   <Draggable
                     nodeRef={nodeRef}
                     key={v.id}
                     bounds={{
                       left: 0,
                       top: 0,
-                      right: parseInt(canvasSize.width) - parseInt(v.width),
-                      bottom: parseInt(canvasSize.width) - parseInt(v.height),
+                      right: canvasSize.width - v.width,
+                      bottom: canvasSize.height - v.height,
                     }}
                     disabled={mode === "read"}
                   >

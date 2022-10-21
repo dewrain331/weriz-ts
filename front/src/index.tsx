@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "@/App";
 import theme from "@/styles/theme";
+import Loader from "@/components/loader";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -14,7 +15,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <Suspense>
+        <Suspense fallback={<Loader />}>
           <App />
         </Suspense>
       </ThemeProvider>

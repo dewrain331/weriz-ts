@@ -30,10 +30,15 @@ const CanvasWrapper = styled.div`
   justify-content: center;
 `;
 
-const Drawer = styled.div`
+interface DrawerProps {
+  width: string;
+  height: string;
+}
+
+const Drawer = styled.div<DrawerProps>`
   position: relative;
   width: ${(props) => props.width};
-  height: ${(props) => props.width};
+  height: ${(props) => props.height};
   border: 1px solid silver;
   background-size: 10px, 30px, 10px 10px, 30px 30px;
   background-image: linear-gradient(90deg, #00000004 1px, transparent 1px),
@@ -48,10 +53,16 @@ const PushRight = styled.div`
   width: 100%;
 `;
 
-const TheFigure = styled.div`
+interface TheFigureProps {
+  width: string;
+  height: string;
+  figure: string;
+}
+
+const TheFigure = styled.div<TheFigureProps>`
   position: absolute;
   width: ${(props) => props.width};
-  height: ${(props) => props.width};
+  height: ${(props) => props.height};
   border: 1px solid ${(props) => props.color};
   border-radius: ${(props) => (props.figure === "Circle" ? "50%" : "0%")};
 

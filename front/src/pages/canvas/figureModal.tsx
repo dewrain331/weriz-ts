@@ -1,21 +1,34 @@
-import { useState } from "react";
+import React, { useState, FormEvent, Dispatch, SetStateAction } from "react";
 import { Form } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 
-import ModalComp from "../../components/modal";
-import Button from "../../components/button";
+import ModalComp from "@/components/modal";
+import Button from "@/components/button";
 import { PushRight } from "./canvas.style";
+import { IFigure } from "./canvas.interface";
 
-const FigureModal = ({ show, setShow, figures, setFigures }) => {
-  const [figure, setFigure] = useState("");
-  const [width, setWidth] = useState("50");
-  const [height, setHeight] = useState("50");
-  const [color, setColor] = useState("#ff0000");
+interface FigureModalProps {
+  show: boolean;
+  setShow: Dispatch<SetStateAction<boolean>>;
+  figures: IFigure[];
+  setFigures: Dispatch<SetStateAction<IFigure[]>>;
+}
 
-  const submitHandler = (evt) => {
+const FigureModal = ({
+  show,
+  setShow,
+  figures,
+  setFigures,
+}: FigureModalProps) => {
+  const [figure, setFigure] = useState<string>("");
+  const [width, setWidth] = useState<number>(50);
+  const [height, setHeight] = useState<number>(50);
+  const [color, setColor] = useState<string>("#ff0000");
+
+  const submitHandler = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     setShow(false);
-    const id = uuidv4();
+    const id: string = uuidv4();
     const prev = figures;
     setFigures([
       ...prev,
@@ -25,6 +38,8 @@ const FigureModal = ({ show, setShow, figures, setFigures }) => {
         height,
         color,
         figure,
+        xPos: 0,
+        yPos: 0,
       },
     ]);
   };
@@ -59,7 +74,7 @@ const FigureModal = ({ show, setShow, figures, setFigures }) => {
             placeholder="the unit is pixel"
             autoComplete="off"
             value={width}
-            onChange={(evt) => setWidth(evt.target.value)}
+            onChange={(evt) => setWidth(+evt.target.value)}
           />
           <br />
           <Form.Label>Input height</Form.Label>
@@ -68,7 +83,7 @@ const FigureModal = ({ show, setShow, figures, setFigures }) => {
             placeholder="the unit is pixel"
             autoComplete="off"
             value={height}
-            onChange={(evt) => setHeight(evt.target.value)}
+            onChange={(evt) => setHeight(+evt.target.value)}
           />
           <br />
           <PushRight>
