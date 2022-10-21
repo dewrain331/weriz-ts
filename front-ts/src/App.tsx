@@ -1,8 +1,17 @@
 import React from "react";
-import Greetings from "@/components/Greetings";
+import { Route, Routes } from "react-router-dom";
+
+import Layout from "@/styles/layout";
 
 const App: React.FC = () => {
-  return <Greetings name="김기동" />;
+  return (
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" />
+        <Route path="/canvas" />
+      </Route>
+    </Routes>
+  );
 };
 
 export default App;
