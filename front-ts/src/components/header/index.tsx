@@ -10,7 +10,7 @@ import {
 } from "./header.style";
 import { NAV_LIST } from "./constant";
 import Button from "@/components/button";
-import AuthModal from "../../pages/auth";
+import AuthModal from "@/pages/auth";
 
 const Header = () => {
   const [showAuthModal, setShowAuthModal] = useState(false);

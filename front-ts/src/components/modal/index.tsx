@@ -3,13 +3,13 @@ import { Modal } from "react-bootstrap";
 
 import ModalPortal from "./modalPortal";
 
-type ModalProps = {
+interface ModalProps {
   show: boolean;
   setShow: Dispatch<SetStateAction<boolean>>;
   title: string;
   main: JSX.Element;
   children: JSX.Element;
-};
+}
 
 const ModalComp = ({ show, setShow, title, main, children }: ModalProps) => {
   return (
