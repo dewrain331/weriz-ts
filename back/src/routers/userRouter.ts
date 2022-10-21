@@ -6,7 +6,7 @@ userRouter.get(
   "/user",
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const msg: String = "testing...";
+      const msg = "testing...";
 
       res.status(200).send(msg);
     } catch (err) {
