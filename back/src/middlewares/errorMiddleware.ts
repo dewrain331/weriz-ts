@@ -1,11 +1,6 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response } from "express";
 
-const errorMiddleware = (
-  error: any,
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
+const errorMiddleware = (error: any, req: Request, res: Response) => {
   const errorMsg: any = {
     errorMessage: error.message,
   };
