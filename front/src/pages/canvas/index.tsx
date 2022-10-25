@@ -32,10 +32,8 @@ const Canvas = () => {
 
   const changeMode = () => {
     if (mode === "read") {
-      alert("The mode is edit now.");
       setMode("edit");
     } else if (mode === "edit") {
-      alert("The mode is read now.");
       setMode("read");
     }
   };
@@ -54,7 +52,7 @@ const Canvas = () => {
             ) : (
               <Button onClick={changeMode}>Read</Button>
             )}
-            <Button>Save</Button>
+            <Button disabled={mode === "edit"}>Save</Button>
           </ButtonWrapper>
           <ButtonWrapper>
             <Button
@@ -96,6 +94,7 @@ const Canvas = () => {
                       figure={v.figure}
                       key={v.id}
                       ref={nodeRef}
+                      id={`${v.id}F`}
                       onClick={() => {
                         if (mode === "read") {
                           clickHandler({ id: v.id });
