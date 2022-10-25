@@ -7,3 +7,9 @@ export interface IFigure {
   xPos: number;
   yPos: number;
 }
+
+export interface ICanvas {
+  name: string;
+  width: number;
+  height: number;
+}

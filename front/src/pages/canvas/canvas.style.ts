@@ -21,7 +21,7 @@ const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 `;
 
 const CanvasWrapper = styled.div`

@@ -11,9 +11,10 @@ import {
 } from "./canvas.style";
 import Button from "@/components/button";
 import FigureModal from "./figureModal";
-import { IFigure } from "./canvas.interface";
+import CanvasModal from "./canvasModal";
+import { IFigure, ICanvas } from "./canvas.interface";
 
-interface clickHandlerProps {
+interface idProp {
   id: string;
 }
 
@@ -21,10 +22,12 @@ const Canvas = () => {
   const [mode, setMode] = useState<string>("read");
   const [showFigureModal, setShowFigureModal] = useState<boolean>(false);
   const [figures, setFigures] = useState<IFigure[] | []>([]);
-  const canvasSize = {
-    width: 700,
-    height: 700,
-  };
+  const [showCanvasModal, setShowCanvasModal] = useState<boolean>(false);
+  const [canvas, setCanvas] = useState<ICanvas>({
+    name: "Canvas",
+    width: 500,
+    height: 500,
+  });
   const nodeRef = useRef(null);
 
   const changeMode = () => {
@@ -37,7 +40,7 @@ const Canvas = () => {
     }
   };
 
-  const clickHandler = ({ id }: clickHandlerProps) => {
+  const clickHandler = ({ id }: idProp) => {
     alert(id);
   };
 
@@ -52,18 +55,26 @@ const Canvas = () => {
               <Button onClick={changeMode}>Read</Button>
             )}
             <Button>Save</Button>
+          </ButtonWrapper>
+          <ButtonWrapper>
             <Button
               onClick={() => setShowFigureModal(true)}
               disabled={mode === "read"}
             >
               Draw a figure
             </Button>
+            <Button
+              onClick={() => setShowCanvasModal(true)}
+              disabled={mode === "read"}
+            >
+              Set the canvas
+            </Button>
           </ButtonWrapper>
           <CanvasWrapper>
             <Drawer
               id="drawer"
-              width={`${canvasSize.width}px`}
-              height={`${canvasSize.height}px`}
+              width={`${canvas.width}px`}
+              height={`${canvas.height}px`}
             >
               {figures.length > 0 &&
                 figures.map((v: IFigure) => (
@@ -73,8 +84,8 @@ const Canvas = () => {
                     bounds={{
                       left: 0,
                       top: 0,
-                      right: canvasSize.width - v.width,
-                      bottom: canvasSize.height - v.height,
+                      right: canvas.width - v.width,
+                      bottom: canvas.height - v.height,
                     }}
                     disabled={mode === "read"}
                   >
@@ -96,7 +107,7 @@ const Canvas = () => {
                 ))}
             </Drawer>
           </CanvasWrapper>
-          Canvas is {canvasSize.width}px * {canvasSize.height}px now.
+          {canvas.name} is {canvas.width}px * {canvas.height}px now.
         </Contents>
       </CanvasContainer>
       {showFigureModal && (
@@ -105,6 +116,13 @@ const Canvas = () => {
           setShow={setShowFigureModal}
           figures={figures}
           setFigures={setFigures}
+        />
+      )}
+      {showCanvasModal && (
+        <CanvasModal
+          show={showCanvasModal}
+          setShow={setShowCanvasModal}
+          setCanvas={setCanvas}
         />
       )}
     </>
