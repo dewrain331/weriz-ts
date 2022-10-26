@@ -9,10 +9,16 @@ import { ICanvas } from "./canvas.interface";
 interface CanvasModalProps {
   show: boolean;
   setShow: Dispatch<SetStateAction<boolean>>;
-  setCanvas: Dispatch<SetStateAction<ICanvas>>;
+  canvasList: ICanvas[];
+  setCanvasList: Dispatch<SetStateAction<ICanvas[]>>;
 }
 
-const CanvasModal = ({ show, setShow, setCanvas }: CanvasModalProps) => {
+const CanvasModal = ({
+  show,
+  setShow,
+  canvasList,
+  setCanvasList,
+}: CanvasModalProps) => {
   const [name, setName] = useState<string>("Canvas");
   const [width, setWidth] = useState<number>(500);
   const [height, setHeight] = useState<number>(500);
@@ -20,11 +26,16 @@ const CanvasModal = ({ show, setShow, setCanvas }: CanvasModalProps) => {
   const submitHandler = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     setShow(false);
-    setCanvas({
-      name,
-      width,
-      height,
-    });
+    const prev = canvasList;
+    setCanvasList([
+      ...prev,
+      {
+        name,
+        width,
+        height,
+        figures: [],
+      },
+    ]);
   };
 
   return (

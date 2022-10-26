@@ -14,3 +14,12 @@ export interface ICanvas {
   height: number;
   figures: IFigure[];
 }
+
+export interface IUser {
+  id: string;
+  email: string;
+  hashedPassword: string;
+  userName: string;
+  canvasData: ICanvas[];
+  phoneNo?: string;
+}

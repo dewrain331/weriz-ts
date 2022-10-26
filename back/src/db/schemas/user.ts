@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-import { IUser } from "./interface";
+import { IUser } from "@src/db/models/interface";
 
 const UserSchema = new Schema<IUser>({
   id: {
@@ -22,7 +22,7 @@ const UserSchema = new Schema<IUser>({
     required: true,
   },
   canvasData: {
-    type: [String],
+    type: [Object],
     required: true,
     default: [],
   },

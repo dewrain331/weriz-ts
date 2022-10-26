@@ -10,15 +10,15 @@ import { IFigure } from "./canvas.interface";
 interface FigureModalProps {
   show: boolean;
   setShow: Dispatch<SetStateAction<boolean>>;
-  figures: IFigure[];
-  setFigures: Dispatch<SetStateAction<IFigure[]>>;
+  figuresList: IFigure[];
+  setFiguresList: Dispatch<SetStateAction<IFigure[]>>;
 }
 
 const FigureModal = ({
   show,
   setShow,
-  figures,
-  setFigures,
+  figuresList,
+  setFiguresList,
 }: FigureModalProps) => {
   const [figure, setFigure] = useState<string>("");
   const [width, setWidth] = useState<number>(50);
@@ -29,8 +29,8 @@ const FigureModal = ({
     evt.preventDefault();
     setShow(false);
     const id: string = uuidv4();
-    const prev = figures;
-    setFigures([
+    const prev = figuresList;
+    setFiguresList([
       ...prev,
       {
         id,
