@@ -20,7 +20,7 @@ interface CanvasModalProps {
   setCanvasPage: Dispatch<SetStateAction<number>>;
 }
 
-const CanvasModal = ({
+const AddCanvasModal = ({
   show,
   setShow,
   canvasList,
@@ -70,7 +70,7 @@ const CanvasModal = ({
     <ModalComp
       show={show}
       setShow={setShow}
-      title="Draw a Figure"
+      title="Add a canvas"
       main={
         <Form validated={validated} onSubmit={submitHandler}>
           <Form.Label>Name your canvas</Form.Label>
@@ -108,7 +108,7 @@ const CanvasModal = ({
           />
           <br />
           <PushRight>
-            <Button type="submit">Set it</Button>
+            <Button type="submit">Add it</Button>
           </PushRight>
         </Form>
       }
@@ -116,4 +116,4 @@ const CanvasModal = ({
   );
 };
 
-export default CanvasModal;
+export default AddCanvasModal;

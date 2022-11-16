@@ -13,7 +13,8 @@ import {
 import Api from "@/Api";
 import Button from "@/components/button";
 import FigureModal from "./figureModal";
-import CanvasModal from "./canvasModal";
+import AddCanvasModal from "./addCanvasModal";
+import SetCanvasModal from "./setCanvasModal";
 import { IFigure, ICanvas } from "./canvas.interface";
 
 interface idProp {
@@ -24,7 +25,8 @@ const Canvas = () => {
   const [mode, setMode] = useState<string>("read");
   const [showFigureModal, setShowFigureModal] = useState<boolean>(false);
   const [figuresList, setFiguresList] = useState<IFigure[] | []>([]);
-  const [showCanvasModal, setShowCanvasModal] = useState<boolean>(false);
+  const [showAddCanvasModal, setShowAddCanvasModal] = useState<boolean>(false);
+  const [showSetCanvasModal, setShowSetCanvasModal] = useState<boolean>(false);
   const [canvasList, setCanvasList] = useState<ICanvas[]>([]);
   const [canvasPage, setCanvasPage] = useState<number>(1);
   const nodeRef = useRef(null);
@@ -67,15 +69,21 @@ const Canvas = () => {
           <ButtonWrapper>
             <Button
               onClick={() => setShowFigureModal(true)}
-              disabled={mode === "read"}
+              disabled={mode === "read" || canvasList.length === 0}
             >
               Draw a figure
             </Button>
             <Button
-              onClick={() => setShowCanvasModal(true)}
+              onClick={() => setShowAddCanvasModal(true)}
               disabled={mode === "read"}
             >
               Add a canvas
+            </Button>
+            <Button
+              onClick={() => setShowSetCanvasModal(true)}
+              disabled={mode === "read" || canvasList.length === 0}
+            >
+              Set this canvas
             </Button>
           </ButtonWrapper>
           <CanvasWrapper>
@@ -162,13 +170,22 @@ const Canvas = () => {
           setFiguresList={setFiguresList}
         />
       )}
-      {showCanvasModal && (
-        <CanvasModal
-          show={showCanvasModal}
-          setShow={setShowCanvasModal}
+      {showAddCanvasModal && (
+        <AddCanvasModal
+          show={showAddCanvasModal}
+          setShow={setShowAddCanvasModal}
           canvasList={canvasList}
           setCanvasList={setCanvasList}
           setCanvasPage={setCanvasPage}
+        />
+      )}
+      {showSetCanvasModal && (
+        <SetCanvasModal
+          show={showSetCanvasModal}
+          setShow={setShowSetCanvasModal}
+          canvasList={canvasList}
+          setCanvasList={setCanvasList}
+          canvasPage={canvasPage}
         />
       )}
     </>

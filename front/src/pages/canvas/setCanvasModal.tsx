@@ -6,31 +6,34 @@ import React, {
   SetStateAction,
 } from "react";
 import { Form } from "react-bootstrap";
-import { v4 as uuidv4 } from "uuid";
 
 import ModalComp from "@/components/modal";
 import Button from "@/components/button";
 import { PushRight } from "./canvas.style";
-import { IFigure } from "./canvas.interface";
+import { ICanvas } from "./canvas.interface";
 
-interface FigureModalProps {
+interface CanvasModalProps {
   show: boolean;
   setShow: Dispatch<SetStateAction<boolean>>;
-  figuresList: IFigure[];
-  setFiguresList: Dispatch<SetStateAction<IFigure[]>>;
+  canvasList: ICanvas[];
+  setCanvasList: Dispatch<SetStateAction<ICanvas[]>>;
+  canvasPage: number;
 }
 
-const FigureModal = ({
+const SetCanvasModal = ({
   show,
   setShow,
-  figuresList,
-  setFiguresList,
-}: FigureModalProps) => {
-  const [figure, setFigure] = useState<string>("");
-  const [width, setWidth] = useState<number>(50);
-  const [height, setHeight] = useState<number>(50);
-  const [color, setColor] = useState<string>("#ff0000");
+  canvasList,
+  setCanvasList,
+  canvasPage,
+}: CanvasModalProps) => {
+  const [name, setName] = useState<string>(canvasList[canvasPage - 1].name);
+  const [width, setWidth] = useState<number>(canvasList[canvasPage - 1].width);
+  const [height, setHeight] = useState<number>(
+    canvasList[canvasPage - 1].height,
+  );
   const [validated, setValidated] = useState<boolean>(false);
+  const { figures } = canvasList[canvasPage - 1];
 
   const submitHandler = (evt: FormEvent<HTMLFormElement>) => {
     const form = evt.currentTarget;
@@ -39,20 +42,14 @@ const FigureModal = ({
       evt.stopPropagation();
     } else {
       setShow(false);
-      const id: string = uuidv4();
-      const prev = figuresList;
-      setFiguresList([
-        ...prev,
-        {
-          id,
-          width,
-          height,
-          color,
-          figure,
-          xPos: 0,
-          yPos: 0,
-        },
-      ]);
+      canvasList.splice(canvasPage - 1, 1, {
+        name,
+        width,
+        height,
+        figures,
+      });
+      const prev = canvasList;
+      setCanvasList([...prev]);
     }
     setValidated(true);
     evt.preventDefault();
@@ -60,12 +57,12 @@ const FigureModal = ({
   };
 
   useEffect(() => {
-    if (width > 150) {
-      setWidth(150);
+    if (width > 800) {
+      setWidth(800);
     }
 
-    if (height > 150) {
-      setHeight(150);
+    if (height > 800) {
+      setHeight(800);
     }
   }, [width, height]);
 
@@ -73,27 +70,16 @@ const FigureModal = ({
     <ModalComp
       show={show}
       setShow={setShow}
-      title="Draw a figure"
+      title="Set this canvas"
       main={
         <Form validated={validated} onSubmit={submitHandler}>
-          <Form.Label>Choose figure</Form.Label>
+          <Form.Label>Name your canvas</Form.Label>
           <Form.Control
-            as="select"
-            multiple
-            onChange={(evt) => setFigure(evt.target.value)}
-            required
-          >
-            <option value="Rectangular" selected>
-              Rectangular
-            </option>
-            <option value="Circle">Circle</option>
-          </Form.Control>
-          <br />
-          <Form.Label>Choose color</Form.Label>
-          <Form.Control
-            type="color"
-            defaultValue="#ff0000"
-            onChange={(evt) => setColor(evt.target.value)}
+            type="string"
+            placeholder="Set your canvas name"
+            autoComplete="off"
+            value={name}
+            onChange={(evt) => setName(evt.target.value)}
             required
           />
           <br />
@@ -122,7 +108,7 @@ const FigureModal = ({
           />
           <br />
           <PushRight>
-            <Button type="submit">Draw it</Button>
+            <Button type="submit">Set it</Button>
           </PushRight>
         </Form>
       }
@@ -130,4 +116,4 @@ const FigureModal = ({
   );
 };
 
-export default FigureModal;
+export default SetCanvasModal;
