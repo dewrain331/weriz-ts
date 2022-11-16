@@ -1,6 +1,12 @@
-import { Request, Response } from "express";
+/* eslint-disable */
+import { Request, Response, NextFunction } from "express";
 
-const errorMiddleware = (error: any, req: Request, res: Response) => {
+const errorMiddleware = (
+  error: any,
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   const errorMsg: any = {
     errorMessage: error.message,
   };

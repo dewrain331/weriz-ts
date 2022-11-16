@@ -47,11 +47,13 @@ const Canvas = () => {
     const fetch = async () => {
       try {
         const res = await Api.get(`/user/canvas`);
+        setCanvasList(res.data.canvasFromDb);
+        console.log("finished");
       } catch (err) {
         console.error(err);
       }
-      fetch();
     };
+    fetch();
   }, []);
 
   return (
