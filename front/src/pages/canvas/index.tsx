@@ -47,8 +47,10 @@ const Canvas = () => {
     const fetch = async () => {
       try {
         const res = await Api.get(`/user/canvas`);
-        setCanvasList(res.data.canvasFromDb);
-        console.log("finished");
+        const canvasData = res.data;
+        setCanvasList(canvasData);
+        setFiguresList(canvasData[0].figures);
+        setCanvasPage(1);
       } catch (err) {
         console.error(err);
       }

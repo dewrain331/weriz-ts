@@ -83,9 +83,7 @@ const FigureModal = ({
             onChange={(evt) => setFigure(evt.target.value)}
             required
           >
-            <option value="Rectangular" selected>
-              Rectangular
-            </option>
+            <option value="Rectangular">Rectangular</option>
             <option value="Circle">Circle</option>
           </Form.Control>
           <br />

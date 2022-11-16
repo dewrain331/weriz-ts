@@ -1,7 +1,7 @@
 import { Router, Request, Response, NextFunction } from "express";
 
 import UserService from "@src/services/userService";
-import { ICanvas } from "@src/db/models/interface";
+// import { ICanvas } from "@src/db/models/interface";
 
 const userRouter = Router();
 

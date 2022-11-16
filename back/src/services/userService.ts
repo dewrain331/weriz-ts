@@ -1,12 +1,12 @@
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
 import userModel from "@src/db/models/userModel";
-import { ICanvas } from "@src/db/models/interface";
+// import { ICanvas } from "@src/db/models/interface";
 
-interface addCanvasProp {
-  id: string;
-  canvasData: ICanvas;
-}
+// interface addCanvasProp {
+//   id: string;
+//   canvasData: ICanvas;
+// }
 
 class UserService {
   static getCanvas = async (id: string) => {
