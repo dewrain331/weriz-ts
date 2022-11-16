@@ -17,6 +17,7 @@ interface CanvasModalProps {
   setShow: Dispatch<SetStateAction<boolean>>;
   canvasList: ICanvas[];
   setCanvasList: Dispatch<SetStateAction<ICanvas[]>>;
+  setCanvasPage: Dispatch<SetStateAction<number>>;
 }
 
 const CanvasModal = ({
@@ -24,6 +25,7 @@ const CanvasModal = ({
   setShow,
   canvasList,
   setCanvasList,
+  setCanvasPage,
 }: CanvasModalProps) => {
   const [name, setName] = useState<string>("Canvas");
   const [width, setWidth] = useState<number>(500);
@@ -47,6 +49,7 @@ const CanvasModal = ({
           figures: [],
         },
       ]);
+      setCanvasPage(canvasList.length + 1);
     }
     setValidated(true);
     evt.preventDefault();

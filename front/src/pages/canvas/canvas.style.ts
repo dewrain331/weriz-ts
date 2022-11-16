@@ -71,6 +71,12 @@ const TheFigure = styled.div<TheFigureProps>`
   }
 `;
 
+const PaginationWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+`;
+
 export {
   CanvasContainer,
   Contents,
@@ -79,4 +85,5 @@ export {
   Drawer,
   PushRight,
   TheFigure,
+  PaginationWrapper,
 };

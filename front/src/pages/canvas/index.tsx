@@ -8,6 +8,7 @@ import {
   CanvasWrapper,
   Drawer,
   TheFigure,
+  PaginationWrapper,
 } from "./canvas.style";
 import Api from "@/Api";
 import Button from "@/components/button";
@@ -74,15 +75,15 @@ const Canvas = () => {
               onClick={() => setShowCanvasModal(true)}
               disabled={mode === "read"}
             >
-              Set the canvas
+              Add a canvas
             </Button>
           </ButtonWrapper>
           <CanvasWrapper>
             {canvasList.length > 0 ? (
               <Drawer
                 id="drawer"
-                width={`${canvasList[0].width}px`}
-                height={`${canvasList[0].height}px`}
+                width={`${canvasList[canvasPage - 1].width}px`}
+                height={`${canvasList[canvasPage - 1].height}px`}
               >
                 {figuresList.length > 0 &&
                   figuresList.map((v: IFigure) => (
@@ -92,8 +93,8 @@ const Canvas = () => {
                       bounds={{
                         left: 0,
                         top: 0,
-                        right: canvasList[0].width - v.width,
-                        bottom: canvasList[0].height - v.height,
+                        right: canvasList[canvasPage - 1].width - v.width,
+                        bottom: canvasList[canvasPage - 1].height - v.height,
                       }}
                       defaultPosition={{ x: v.xPos, y: v.yPos }}
                       disabled={mode === "read"}
@@ -124,13 +125,34 @@ const Canvas = () => {
           </CanvasWrapper>
           {canvasList.length > 0 ? (
             <div>
-              {canvasList[0].name} is {canvasList[0].width}px *{" "}
-              {canvasList[0].height}px now.
+              {canvasList[canvasPage - 1].name} is{" "}
+              {canvasList[canvasPage - 1].width}px *{" "}
+              {canvasList[canvasPage - 1].height}px now.
             </div>
           ) : (
             <div />
           )}
         </Contents>
+        {canvasList.length > 0 && (
+          <PaginationWrapper>
+            <Button
+              type="button"
+              onClick={() => setCanvasPage((prev) => prev - 1)}
+              disabled={canvasPage === 1}
+              style={{ marginRight: "1rem" }}
+            >
+              {"<"}
+            </Button>
+            {canvasPage}
+            <Button
+              type="button"
+              onClick={() => setCanvasPage((prev) => prev + 1)}
+              disabled={canvasPage === canvasList.length}
+            >
+              {">"}
+            </Button>
+          </PaginationWrapper>
+        )}
       </CanvasContainer>
       {showFigureModal && (
         <FigureModal
@@ -146,6 +168,7 @@ const Canvas = () => {
           setShow={setShowCanvasModal}
           canvasList={canvasList}
           setCanvasList={setCanvasList}
+          setCanvasPage={setCanvasPage}
         />
       )}
     </>
