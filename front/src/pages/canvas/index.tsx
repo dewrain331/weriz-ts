@@ -25,6 +25,7 @@ const Canvas = () => {
   const [figuresList, setFiguresList] = useState<IFigure[] | []>([]);
   const [showCanvasModal, setShowCanvasModal] = useState<boolean>(false);
   const [canvasList, setCanvasList] = useState<ICanvas[]>([]);
+  const [canvasPage, setCanvasPage] = useState<number>(1);
   const nodeRef = useRef(null);
 
   const changeMode = () => {
@@ -46,6 +47,7 @@ const Canvas = () => {
       } catch (err) {
         console.error(err);
       }
+      fetch();
     };
   }, []);
 
@@ -109,7 +111,9 @@ const Canvas = () => {
                             clickHandler({ id: v.id });
                           }
                         }}
-                        style={{ cursor: mode === "read" ? "pointer" : "move" }}
+                        style={{
+                          cursor: mode === "read" ? "pointer" : "move",
+                        }}
                       />
                     </Draggable>
                   ))}

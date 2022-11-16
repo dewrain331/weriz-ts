@@ -1,4 +1,10 @@
-import React, { useState, FormEvent, Dispatch, SetStateAction } from "react";
+import React, {
+  useState,
+  useEffect,
+  FormEvent,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { Form } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 
@@ -44,6 +50,16 @@ const FigureModal = ({
     ]);
   };
 
+  useEffect(() => {
+    if (width > 150) {
+      setWidth(150);
+    }
+
+    if (height > 150) {
+      setHeight(150);
+    }
+  }, [width, height]);
+
   return (
     <ModalComp
       show={show}
@@ -70,20 +86,24 @@ const FigureModal = ({
           <br />
           <Form.Label>Input width</Form.Label>
           <Form.Control
-            type="number"
+            type="string"
             placeholder="the unit is pixel"
             autoComplete="off"
             value={width}
-            onChange={(evt) => setWidth(+evt.target.value)}
+            onChange={(evt) =>
+              setWidth(+evt.target.value.replace(/[^0-9]/g, ""))
+            }
           />
           <br />
           <Form.Label>Input height</Form.Label>
           <Form.Control
-            type="number"
+            type="string"
             placeholder="the unit is pixel"
             autoComplete="off"
             value={height}
-            onChange={(evt) => setHeight(+evt.target.value)}
+            onChange={(evt) =>
+              setHeight(+evt.target.value.replace(/[^0-9]/g, ""))
+            }
           />
           <br />
           <PushRight>
