@@ -30,24 +30,33 @@ const FigureModal = ({
   const [width, setWidth] = useState<number>(50);
   const [height, setHeight] = useState<number>(50);
   const [color, setColor] = useState<string>("#ff0000");
+  const [validated, setValidated] = useState<boolean>(false);
 
   const submitHandler = (evt: FormEvent<HTMLFormElement>) => {
+    const form = evt.currentTarget;
+    if (form.checkValidity() === false) {
+      evt.preventDefault();
+      evt.stopPropagation();
+    } else {
+      setShow(false);
+      const id: string = uuidv4();
+      const prev = figuresList;
+      setFiguresList([
+        ...prev,
+        {
+          id,
+          width,
+          height,
+          color,
+          figure,
+          xPos: 0,
+          yPos: 0,
+        },
+      ]);
+    }
+    setValidated(true);
     evt.preventDefault();
-    setShow(false);
-    const id: string = uuidv4();
-    const prev = figuresList;
-    setFiguresList([
-      ...prev,
-      {
-        id,
-        width,
-        height,
-        color,
-        figure,
-        xPos: 0,
-        yPos: 0,
-      },
-    ]);
+    evt.stopPropagation();
   };
 
   useEffect(() => {
@@ -66,14 +75,17 @@ const FigureModal = ({
       setShow={setShow}
       title="Draw a Figure"
       main={
-        <Form onSubmit={submitHandler}>
+        <Form validated={validated} onSubmit={submitHandler}>
           <Form.Label>Choose figure</Form.Label>
           <Form.Control
             as="select"
             multiple
             onChange={(evt) => setFigure(evt.target.value)}
+            required
           >
-            <option value="Rectangular">Rectangular</option>
+            <option value="Rectangular" selected>
+              Rectangular
+            </option>
             <option value="Circle">Circle</option>
           </Form.Control>
           <br />
@@ -82,6 +94,7 @@ const FigureModal = ({
             type="color"
             defaultValue="#ff0000"
             onChange={(evt) => setColor(evt.target.value)}
+            required
           />
           <br />
           <Form.Label>Input width</Form.Label>
@@ -93,6 +106,7 @@ const FigureModal = ({
             onChange={(evt) =>
               setWidth(+evt.target.value.replace(/[^0-9]/g, ""))
             }
+            required
           />
           <br />
           <Form.Label>Input height</Form.Label>
@@ -104,6 +118,7 @@ const FigureModal = ({
             onChange={(evt) =>
               setHeight(+evt.target.value.replace(/[^0-9]/g, ""))
             }
+            required
           />
           <br />
           <PushRight>
