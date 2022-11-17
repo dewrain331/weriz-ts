@@ -1,9 +1,9 @@
 import { User } from "@src/db/schemas/user";
-import { IFigure } from "@src/db/models/interface";
+import { ICanvas } from "@src/db/models/interface";
 
-interface updateFiguresProp {
+interface updateCanvasProp {
   id: string;
-  figureData: IFigure[];
+  canvasData: ICanvas[];
 }
 
 const userModel = {
@@ -13,9 +13,9 @@ const userModel = {
     return theUser;
   },
 
-  updateFigures: async ({ id, figureData }: updateFiguresProp) => {
+  updateCanvas: async ({ id, canvasData }: updateCanvasProp) => {
     const filter = { id };
-    const update = { $set: figureData };
+    const update = { $set: canvasData };
     const option = { returnOriginal: false };
 
     const updatedUser = await User.findOneAndUpdate(filter, update, option);

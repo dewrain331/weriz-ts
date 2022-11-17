@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Draggable from "react-draggable";
+import { ToastContainer, toast } from "react-toastify";
 
 import {
   CanvasContainer,
@@ -40,7 +41,21 @@ const Canvas = () => {
   };
 
   const clickHandler = ({ id }: idProp) => {
-    alert(id);
+    const alert = () => toast.warning(`${id}`);
+    alert();
+  };
+
+  const saveIntoDb = async () => {
+    try {
+      await Api.put(`/user/canvas`, {
+        canvasData: canvasList,
+      });
+      const successToast = () => toast.success("Your canvas is saved into DB");
+      successToast();
+    } catch (err) {
+      const errorToast = () => toast.error("An unexpected error has occurred!");
+      errorToast();
+    }
   };
 
   useEffect(() => {
@@ -52,7 +67,9 @@ const Canvas = () => {
         setFiguresList(canvasData[0].figures);
         setCanvasPage(1);
       } catch (err) {
-        console.error(err);
+        const errorToast = () =>
+          toast.error("An unexpected error has occurred!");
+        errorToast();
       }
     };
     fetch();
@@ -68,7 +85,9 @@ const Canvas = () => {
             ) : (
               <Button onClick={changeMode}>Read</Button>
             )}
-            <Button disabled={mode === "edit"}>Save</Button>
+            <Button onClick={saveIntoDb} disabled={mode === "edit"}>
+              Save
+            </Button>
           </ButtonWrapper>
           <ButtonWrapper>
             <Button
@@ -192,6 +211,18 @@ const Canvas = () => {
           canvasPage={canvasPage}
         />
       )}
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        pauseOnHover={false}
+        theme="light"
+      />
     </>
   );
 };

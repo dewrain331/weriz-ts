@@ -1,12 +1,12 @@
 // import { v4 as uuidv4 } from "uuid";
 
 import userModel from "@src/db/models/userModel";
-// import { ICanvas } from "@src/db/models/interface";
+import { ICanvas } from "@src/db/models/interface";
 
-// interface addCanvasProp {
-//   id: string;
-//   canvasData: ICanvas;
-// }
+interface updateCanvasProp {
+  id: string;
+  canvasData: ICanvas[];
+}
 
 class UserService {
   static getCanvas = async (id: string) => {
@@ -20,7 +20,19 @@ class UserService {
     return canvasData;
   };
 
-  // static addCanvas = async ({ id, canvasData }: addCanvasProp) => {};
+  static updateCanvas = async ({ id, canvasData }: updateCanvasProp) => {
+    const theUser = await userModel.findById(id);
+    if (!theUser) {
+      throw new Error("error.noUser");
+    }
+
+    const updateCanvasData = await userModel.updateCanvas({
+      id,
+      canvasData,
+    });
+
+    return updateCanvasData;
+  };
 }
 
 export default UserService;

@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { ThemeProvider } from "styled-components";
