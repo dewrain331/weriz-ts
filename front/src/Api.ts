@@ -30,7 +30,7 @@ Api.interceptors.request.use(
     const accessToken = localStorage.getItem("accessToken");
 
     config.headers = {
-      "Content-Type": "application/json, charset=utf-8",
+      "Content-Type": "application/json",
       Authorization: `Bearer ${accessToken}`,
     };
 

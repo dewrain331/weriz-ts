@@ -38,7 +38,6 @@ userRouter.put(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       // const userId = req.currentUserId;
-      console.log(req.body);
       const userId = "test";
       const canvasData: ICanvas[] = req.body;
       const canvasIntoDb = await UserService.updateCanvas({

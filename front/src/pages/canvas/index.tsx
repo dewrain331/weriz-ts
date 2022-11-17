@@ -50,7 +50,8 @@ const Canvas = () => {
       await Api.put(`/user/canvas`, {
         canvasData: canvasList,
       });
-      const successToast = () => toast.success("Your canvas is saved into DB");
+      const successToast = () =>
+        toast.success("Your canvas has been saved into DB successfully.");
       successToast();
     } catch (err) {
       const errorToast = () => toast.error("An unexpected error has occurred!");
@@ -74,6 +75,10 @@ const Canvas = () => {
     };
     fetch();
   }, []);
+
+  useEffect(() => {
+    setFiguresList(canvasList[canvasPage - 1]?.figures || [{}]);
+  }, [canvasPage]);
 
   return (
     <>
@@ -168,7 +173,9 @@ const Canvas = () => {
           <PaginationWrapper>
             <Button
               type="button"
-              onClick={() => setCanvasPage((prev) => prev - 1)}
+              onClick={() => {
+                setCanvasPage((prev) => prev - 1);
+              }}
               disabled={canvasPage === 1}
               style={{ marginRight: "1rem" }}
             >
@@ -177,7 +184,9 @@ const Canvas = () => {
             {canvasPage}
             <Button
               type="button"
-              onClick={() => setCanvasPage((prev) => prev + 1)}
+              onClick={() => {
+                setCanvasPage((prev) => prev + 1);
+              }}
               disabled={canvasPage === canvasList.length}
             >
               {">"}
@@ -213,7 +222,7 @@ const Canvas = () => {
       )}
       <ToastContainer
         position="bottom-center"
-        autoClose={3000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
